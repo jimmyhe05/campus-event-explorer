@@ -6,10 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.navigation.compose.rememberNavController
 
 
 import com.jimmyh.campuseventexplorer.data.EventRepository
@@ -29,19 +26,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun CampusEventExplorerApp() {
+    val navController = rememberNavController()
     val repository = remember { EventRepository() }
-    var query by rememberSaveable { mutableStateOf("") }
-
-
-    val visibleEvents = repository.events.filter { event ->
-        event.title.contains(query, ignoreCase = true) ||
-                event.category.contains(query, ignoreCase = true)
-    }
-
-    EventListScreen(
-        events = visibleEvents,
-        query = query,
-        onQueryChange = { query = it },
-        onEventSelected = { },
-    )
+    CampusEventNavHost(navController = navController, repository = repository)
 }
