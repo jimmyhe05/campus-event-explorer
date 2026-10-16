@@ -2,6 +2,10 @@ package com.jimmyh.campuseventexplorer
 
 import kotlinx.serialization.Serializable
 
-@Serializable data object EventList
+// Start destination: the searchable list of events.
+@Serializable
+data object EventList
 
-@Serializable data class EventDetail(val eventId: Long)
+// Detail destination. Carries only the event's ID, never the whole CampusEvent.
+@Serializable
+data class EventDetail(val eventId: Long)

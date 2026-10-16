@@ -7,8 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.compose.rememberNavController
-
-
 import com.jimmyh.campuseventexplorer.data.EventRepository
 import com.jimmyh.campuseventexplorer.ui.theme.CampusEventExplorerTheme
 
